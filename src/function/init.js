@@ -52,7 +52,7 @@ function($, emojione, blankImg, slice, css_class, emojioneSupportMode, invisible
         }
 
         var sourceValFunc = source.is("TEXTAREA") || source.is("INPUT") ? "val" : "text",
-            editor, button, picker, filters, filtersBtns, searchPanel, emojisList, categories, categoryBlocks, scrollArea,
+            editor, buttoninsert, button, picker, filters, filtersBtns, searchPanel, emojisList, categories, categoryBlocks, scrollArea,
             tones = div('tones',
                 options.tones ?
                     function() {
@@ -75,6 +75,10 @@ function($, emojione, blankImg, slice, css_class, emojioneSupportMode, invisible
                 placeholder: options.placeholder || source.data("placeholder") || source.attr("placeholder") || "",
                 tabindex: 0
             }),
+            // 添加插入功能按钮
+            buttoninsert = options.insert?self.buttoninsert = div('buttoninsert',
+                div('buttoninsert-btn')
+            ): null,
             button = self.button = div('button',
                 div('button-open'),
                 div('button-close')
@@ -228,6 +232,8 @@ function($, emojione, blankImg, slice, css_class, emojioneSupportMode, invisible
         attach(self, tones.children(), {click: "tone.click"});
         attach(self, [picker, button], {mousedown: "!mousedown"}, editor);
         attach(self, button, {click: "button.click"});
+        attach(self, [picker, buttoninsert], {mousedown: "!mousedown"}, editor);
+        attach(self, buttoninsert, {click: "buttoninsert.click"});
         attach(self, editor, {paste :"!paste"}, editor);
         attach(self, editor, ["focus", "blur"], function() { return self.stayFocused ? false : editor; } );
         attach(self, picker, {mousedown: "picker.mousedown", mouseup: "picker.mouseup", click: "picker.click",
@@ -316,6 +322,11 @@ function($, emojione, blankImg, slice, css_class, emojioneSupportMode, invisible
                 self.showPicker();
                 self.searchSel = null;
             }
+        })
+
+        // 点击插入按钮
+        .on("@buttoninsert.click", function(buttoninsert) {
+            pasteHtmlAtCaret(options.insert);
         })
 
         .on("@!paste", function(editor, event) {

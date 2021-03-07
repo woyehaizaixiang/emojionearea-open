@@ -183,7 +183,27 @@
             }
         }
     }
-
+    .#{$css-prefix}-buttoninsert{
+        z-index: 5;
+        position: absolute;
+        right: 3px;
+        bottom: 3px;
+        cursor: pointer;
+        .#{$css-prefix}-buttoninsert-btn{
+            width: 50px;
+            height: 24px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            position: relative;
+            &::before{
+                content: 'insert';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate3d(-50%, -50%, 0);
+            }
+        }
+    }
     .#{$css-prefix}-picker {
         background: $picker-bg;
         position: absolute;

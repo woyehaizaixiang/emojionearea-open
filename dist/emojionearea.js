@@ -3,7 +3,7 @@
  * https://github.com/mervick/emojionearea
  * Copyright Andrey Izman and other contributors
  * Released under the MIT license
- * Date: 2021-03-04T15:18Z
+ * Date: 2021-03-07T06:34Z
  */
 window = ( typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {} );
 document = window.document || {};
@@ -894,7 +894,7 @@ document = window.document || {};
         }
 
         var sourceValFunc = source.is("TEXTAREA") || source.is("INPUT") ? "val" : "text",
-            editor, button, picker, filters, filtersBtns, searchPanel, emojisList, categories, categoryBlocks, scrollArea,
+            editor, buttoninsert, button, picker, filters, filtersBtns, searchPanel, emojisList, categories, categoryBlocks, scrollArea,
             tones = div('tones',
                 options.tones ?
                     function() {
@@ -917,6 +917,10 @@ document = window.document || {};
                 placeholder: options.placeholder || source.data("placeholder") || source.attr("placeholder") || "",
                 tabindex: 0
             }),
+            // 添加插入功能按钮
+            buttoninsert = options.insert?self.buttoninsert = div('buttoninsert',
+                div('buttoninsert-btn')
+            ): null,
             button = self.button = div('button',
                 div('button-open'),
                 div('button-close')
@@ -1070,6 +1074,8 @@ document = window.document || {};
         attach(self, tones.children(), {click: "tone.click"});
         attach(self, [picker, button], {mousedown: "!mousedown"}, editor);
         attach(self, button, {click: "button.click"});
+        attach(self, [picker, buttoninsert], {mousedown: "!mousedown"}, editor);
+        attach(self, buttoninsert, {click: "buttoninsert.click"});
         attach(self, editor, {paste :"!paste"}, editor);
         attach(self, editor, ["focus", "blur"], function() { return self.stayFocused ? false : editor; } );
         attach(self, picker, {mousedown: "picker.mousedown", mouseup: "picker.mouseup", click: "picker.click",
@@ -1158,6 +1164,11 @@ document = window.document || {};
                 self.showPicker();
                 self.searchSel = null;
             }
+        })
+
+        // 点击插入按钮
+        .on("@buttoninsert.click", function(buttoninsert) {
+            pasteHtmlAtCaret(options.insert);
         })
 
         .on("@!paste", function(editor, event) {
