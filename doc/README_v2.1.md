@@ -1,19 +1,19 @@
 # EmojiOne Area Version 2.1 (Legacy)
 
-EmojiOne Area is a small jQuery plugin that allows you to transform any html element into simple WYSIWYG editor with 
-ability to use Emojione icons. 
+EmojiOne Area is a small jQuery plugin that allows you to transform any html element into simple WYSIWYG editor with
+ability to use Emojione icons.
 The end result is a secure text/plain in which the image icons will be replaced with their Unicode analogues.
 
-EmojiOneArea 2.1 is legacy, and unsupported. 
+EmojiOneArea 2.1 is legacy, and unsupported.
 For new projects you should use the latest 3.x version...
 
-[See here for EmojiOneArea 3.x Docs](https://github.com/mervick/emojionearea)
+[See here for EmojiOneArea 3.x Docs](https://github.com/woyehaizaixiang/emojionearea-open)
 
 ### Version 2.1
 
 ![EmojiOne Area version 2.1](http://mervick.github.io/emojionearea/images/screen.png)
 
-#### Version 2.1 Standalone mode  
+#### Version 2.1 Standalone mode
 ![EmojiOne Area version 2.1 - Standalone mode](http://mervick.github.io/emojionearea/images/standalone.png)
 
 [See the Live Demo here.](http://mervick.github.io/emojionearea/)
@@ -25,7 +25,7 @@ The preferred way to install is via [Bower](http://bower.io/), [npm](https://www
 ### Install v2.1
 
 ```bash
-bower install emojionearea#^2.1.0 
+bower install emojionearea#^2.1.0
 # or
 npm install emojionearea@^2.1.0
 # or
@@ -84,9 +84,9 @@ Default options
       shortnames        : false, // if true - will converts emojis to short names,
                                  // by default converts emojis to unicode characters
       standalone        : false, // whether to use standalone EmojiOneArea picker (for EmojiOneArea 2.1 only)
-      useInternalCDN    : true, 
+      useInternalCDN    : true,
       recentEmojis      : true, // whether to show recently select Emoji's in picker
-      
+
       textcomplete: {
         maxCount: 15,           // max amount of items to show in autocomplete drop-down list
         placement: null,        // placement of autocomplete dropdown list [ null (default) | top | absleft | absright ]

@@ -1,8 +1,8 @@
 # EmojioneArea
 
 EmojioneArea is a small jQuery plugin that allows you to transform any html element into simple WYSIWYG editor with
-ability to use Emojione icons.  
-The end result is a secure text/plain in which the image icons will be replaced with their Unicode analogues.  
+ability to use Emojione icons.
+The end result is a secure text/plain in which the image icons will be replaced with their Unicode analogues.
 
 ### Preview version 3.x
 
@@ -10,7 +10,7 @@ The end result is a secure text/plain in which the image icons will be replaced 
 
 [See the Live Demo here](https://jsfiddle.net/1v03Lqnu/)
 
-[Version 2.1.x](https://github.com/mervick/emojionearea/tree/v2.1.x)
+[Version 2.1.x](https://github.com/woyehaizaixiang/emojionearea-open/tree/v2.1.x)
 
 ## Installation
 
@@ -42,8 +42,8 @@ Simple usage:
 </script>
 ```
 
-EmojioneArea uses awesome [Emojione](https://github.com/emojione/emojione) emojis.  
-So when `emojionearea.js` loads, it's require to `emojione.js` loaded too, but if it not loaded in the page then EmojioneArea loads it from CDN.  
+EmojioneArea uses awesome [Emojione](https://github.com/emojione/emojione) emojis.
+So when `emojionearea.js` loads, it's require to `emojione.js` loaded too, but if it not loaded in the page then EmojioneArea loads it from CDN.
 For avoiding this behavior you can add `emojione.js` and `emojione.css` into your page.
 
 
@@ -60,30 +60,30 @@ window.emojioneVersion = "3.1.2";
 
 Standalone mode
 
-**type**: `boolean`  
-**default**: `false`  
+**type**: `boolean`
+**default**: `false`
 
-Example:  
+Example:
 ```js
 $(".emojionearea").emojioneArea({
     standalone: true
 });
 ```
 
-Preview:  
+Preview:
 
 ![EmojiOneArea - Standalone mode](http://mervick.github.io/emojionearea/images/standalone_v3.png)
 
 #### `emojiPlaceholder`
 
-The placeholder (default emoji) of the button in the standalone mode.  
+The placeholder (default emoji) of the button in the standalone mode.
 Works only with standalone mode
 
-**type**: `string`  
-**default**: `':smiley:'`  
+**type**: `string`
+**default**: `':smiley:'`
 **accepts values**: [any emojione shortname]
 
-Example:  
+Example:
 ```js
 $(".emojionearea").emojioneArea({
     emojiPlaceholder: ":smile_cat:"
@@ -94,8 +94,8 @@ $(".emojionearea").emojioneArea({
 
 The placeholder of the editor
 
-**type**: `string`  
-**default**: [uses placeholder attribute from the source input]  
+**type**: `string`
+**default**: [uses placeholder attribute from the source input]
 
 Example:
 ```js
@@ -108,8 +108,8 @@ $(".emojionearea").emojioneArea({
 
 Whether is enabled search emojis in the picker
 
-**type**: `boolean`  
-**default**: `true`  
+**type**: `boolean`
+**default**: `true`
 
 Example:
 ```js
@@ -122,8 +122,8 @@ $(".emojionearea").emojioneArea({
 
 The search placeholder
 
-**type**: `string`  
-**default**: `'SEARCH'`  
+**type**: `string`
+**default**: `'SEARCH'`
 
 Example:
 ```js
@@ -136,8 +136,8 @@ $(".emojionearea").emojioneArea({
 
 Whether to use the loading mechanism to load EmojiOne from CDN
 
-**type**: `boolean`  
-**default**: `true`  
+**type**: `boolean`
+**default**: `true`
 
 Example:
 ```js
@@ -150,8 +150,8 @@ $(".emojionearea").emojioneArea({
 
 The title of the emoji button (hint on the hover)
 
-**type**: `string`  
-**default**: `"Use the TAB key to insert emoji faster"`  
+**type**: `string`
+**default**: `"Use the TAB key to insert emoji faster"`
 
 Example:
 ```js
@@ -164,8 +164,8 @@ $(".emojionearea").emojioneArea({
 
 Whether to show recently selected emojis in the picker
 
-**type**: `boolean`  
-**default**: `true`  
+**type**: `boolean`
+**default**: `true`
 
 Example:
 ```js
@@ -178,9 +178,9 @@ $(".emojionearea").emojioneArea({
 
 The position of the emojis picker in the relation to the editor
 
-**type**: `string`  
-**default**: `'top'`  
-**accepts values**: `'top' | 'right' | 'bottom'`  
+**type**: `string`
+**default**: `'top'`
+**accepts values**: `'top' | 'right' | 'bottom'`
 
 Example:
 ```js
@@ -191,11 +191,11 @@ $(".emojionearea").emojioneArea({
 
 #### `filtersPosition`
 
-The position of the filters header in the emojis picker 
+The position of the filters header in the emojis picker
 
-**type**: `string`  
-**default**: `'top'`  
-**accepts values**: `'top' | 'bottom'`  
+**type**: `string`
+**default**: `'top'`
+**accepts values**: `'top' | 'bottom'`
 
 Example:
 ```js
@@ -210,9 +210,9 @@ $(".emojionearea").emojioneArea({
 
 The search panel position if `search` option enabled
 
-**type** `string`  
-**default**: `top`  
-**accepts**: `'top' | 'bottom'`  
+**type** `string`
+**default**: `top`
+**accepts**: `'top' | 'bottom'`
 
 Example:
 ```js
@@ -227,8 +227,8 @@ $(".emojionearea").emojioneArea({
 
 Whether to hide picker when blur event triggers
 
-**type**: `boolean`  
-**default**: `true`  
+**type**: `boolean`
+**default**: `true`
 
 Example:
 ```js
@@ -239,13 +239,13 @@ $(".emojionearea").emojioneArea({
 
 #### `container`
 
-The container of the plugin.  
+The container of the plugin.
 
-By default, emojionearea container created directly under the source.  
+By default, emojionearea container created directly under the source.
 In this option you can specify custom `jQuery|selector` container.
 
-**type**: `jQuery|selector`  
-**default**: `null`  
+**type**: `jQuery|selector`
+**default**: `null`
 
 Examples:
 ```html
@@ -268,8 +268,8 @@ Examples:
 
 Whether to show the skin tone buttons in the emoji picker
 
-**type**: `boolean`  
-**default**: `true`  
+**type**: `boolean`
+**default**: `true`
 
 Example:
 ```js
@@ -282,9 +282,9 @@ $(".emojionearea").emojioneArea({
 
 The style of the skin tones selector
 
-**type**: `string`  
-**default**: `'bullet'`  
-**accepts values**: `'bullet' | 'radio' | 'square' | 'checkbox'`  
+**type**: `string`
+**default**: `'bullet'`
+**accepts values**: `'bullet' | 'radio' | 'square' | 'checkbox'`
 
 Example:
 ```js
@@ -295,15 +295,15 @@ $(".emojionearea").emojioneArea({
 
 #### `shortnames`
 
-By default EmojioneArea parses only utf8 emojis (e.g. `😀😊😍🤑😜🤓`) from the value of the input source.  
-This option enables to parse also the shortnames (e.g. `:smile:`, `:smiley:`, `:cat:`, etc).  
-Also affects the work of the method `setText()`.  
+By default EmojioneArea parses only utf8 emojis (e.g. `😀😊😍🤑😜🤓`) from the value of the input source.
+This option enables to parse also the shortnames (e.g. `:smile:`, `:smiley:`, `:cat:`, etc).
+Also affects the work of the method `setText()`.
 
-Note. Affects only to how it parse emojis.  
+Note. Affects only to how it parse emojis.
 To change how it saves emojis use `saveEmojisAs` option (see below).
 
-**type**: `boolean`  
-**default**: `false`  
+**type**: `boolean`
+**default**: `false`
 
 Example:
 ```js
@@ -316,12 +316,12 @@ $(".emojionearea").emojioneArea({
 
 The processor type of the how emojionearea saves icons to the source, also affects on the method `getText()`
 
-**type**: `string`  
-**default**: `'unicode'`  
-**accepts values**: `'unicode' | 'shortname' | 'image'`  
+**type**: `string`
+**default**: `'unicode'`
+**accepts values**: `'unicode' | 'shortname' | 'image'`
 * unicode - saves emojis as utf8 text (e.g. `😀😊😍🤑😜🤓`);
 * shortname - save emojis as shortnames (e.g. `:smile:`, `:smiley:`, `:cat:`, etc);
-* image - save emojis as html images, example: 
+* image - save emojis as html images, example:
 ```html
 <img alt="😀" class="emojioneemoji" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f600.png">
 ```
@@ -330,8 +330,8 @@ The processor type of the how emojionearea saves icons to the source, also affec
 
 Whether to hide source input after render the plugin
 
-**type**: `boolean`  
-**default**: `true`  
+**type**: `boolean`
+**default**: `true`
 
 Example:
 ```js
@@ -342,12 +342,12 @@ $(".emojionearea").emojioneArea({
 
 #### `inline`
 
-Inline mode  
-Whether to use plugin editor as inline input  
+Inline mode
+Whether to use plugin editor as inline input
 
-**type**: `boolean|null`  
-**default**: `null`  
-**accepts values**: `null | true | false`  
+**type**: `boolean|null`
+**default**: `null`
+**accepts values**: `null | true | false`
 * `null` - auto detect, if input is textarea then `false`, when it is `input[type=text]` then `true`
 
 Example:
@@ -357,7 +357,7 @@ $(".emojionearea").emojioneArea({
 });
 ```
 
-Preview:  
+Preview:
 
 ![EmojioneArea - inline mode](http://mervick.github.io/emojionearea/images/inline.png?)
 
@@ -365,8 +365,8 @@ Preview:
 
 Whether to attach shortcuts events
 
-**type**: `boolean`  
-**default**: `true`  
+**type**: `boolean`
+**default**: `true`
 
 Example:
 ```js
@@ -377,10 +377,10 @@ $(".emojionearea").emojioneArea({
 
 #### `autocomplete`
 
-Whether to add the emojis short names autocomplete functional 
+Whether to add the emojis short names autocomplete functional
 
-**type**: `boolean`  
-**default**: `true`  
+**type**: `boolean`
+**default**: `true`
 
 Example:
 ```js
@@ -393,8 +393,8 @@ $(".emojionearea").emojioneArea({
 
 Whether to show skin emojis in the autocomplete dropdown
 
-**type**: `boolean`  
-**default**: `false`  
+**type**: `boolean`
+**default**: `false`
 
 Example:
 ```js
@@ -405,10 +405,10 @@ $(".emojionearea").emojioneArea({
 
 #### `textcomplete`
 
-The settings of the autocomplete dropdown 
+The settings of the autocomplete dropdown
 
-**type**: `object`  
-**default**: 
+**type**: `object`
+**default**:
 ```js
 {
     maxCount  : 15,
@@ -431,10 +431,10 @@ $(".emojionearea").emojioneArea({
 
 #### `attributes`
 
-The html attributes of the editor (contenteditable) of the plugin 
+The html attributes of the editor (contenteditable) of the plugin
 
-**type**: `object`  
-**default**: 
+**type**: `object`
+**default**:
 ```js
 {
     dir            : "ltr",
@@ -465,8 +465,8 @@ $(".emojionearea").emojioneArea({
 
 The filters (tabs) in the emojis picker
 
-**type**: `object`  
-**default**: [the full default filters you can find here [here](https://github.com/mervick/emojionearea/blob/master/src/function/getDefaultOptions.js#L55)]
+**type**: `object`
+**default**: [the full default filters you can find here [here](https://github.com/woyehaizaixiang/emojionearea-open/blob/master/src/function/getDefaultOptions.js#L55)]
 
 ```js
 {
@@ -553,12 +553,12 @@ $(".emojionearea").emojioneArea({
 
   Attach handler for event(s)
 
-- param **events**  
-  Type: `String`  
+- param **events**
+  Type: `String`
   One or more space-separated event types
 
-- param **handler**  
-  Type: `Function(jQuery Element, Event eventObject [, any extraParameter ] [, ...])`  
+- param **handler**
+  Type: `Function(jQuery Element, Event eventObject [, any extraParameter ] [, ...])`
   A function to execute when the event is triggered
 
 - returns `EmojioneArea` instance
@@ -567,12 +567,12 @@ $(".emojionearea").emojioneArea({
 
   Remove previously attached handler (if handler is specified) or all handlers of specified event(s)
 
-- param **events**  
+- param **events**
   Type: `String`
   One or more space-separated event types
 
-- param **handler** [optional]  
-  Type: `Function(jQuery Element, Event eventObject [, any extraParameter ] [, ... ])`  
+- param **handler** [optional]
+  Type: `Function(jQuery Element, Event eventObject [, any extraParameter ] [, ... ])`
   A handler function previously attached for the event(s) by `.on` method
 
 - returns `EmojioneArea` instance
@@ -581,11 +581,11 @@ $(".emojionearea").emojioneArea({
 
   Trigger event(s)
 
-- param **events**  
-  Type: `String`  
+- param **events**
+  Type: `String`
   One or more space-separated event types
 
-- params **[, ...]** [optional]  
+- params **[, ...]** [optional]
   Type: `any`
   Extra parameters
 
@@ -596,7 +596,7 @@ $(".emojionearea").emojioneArea({
   Set emojionearea text
 
 - param **str**
-  Type: `String`  
+  Type: `String`
   Set text
 
 - returns `EmojioneArea` instance
@@ -647,11 +647,11 @@ How to use methods, example:
   el[0].emojioneArea.on("emojibtn.click", function(btn, event) {
     console.log(btn.html());
   });
-  
+
   // OR
   $("selector2").emojioneArea();
   $("selector2")[0].emojioneArea.getText();
-  
+
   // OR
   $("selector3").emojioneArea();
   $("selector3").data("emojioneArea").showPicker();
@@ -663,128 +663,128 @@ How to use methods, example:
 **List of built-in events:**
 
 #### `ready` or `onLoad`
-  triggers when emojionearea is initialized  
+  triggers when emojionearea is initialized
   Handler type: `Function` (no params)
-  
+
 #### `click`
-  triggers when user clicks on emojionearea input or picker  
-  Handler type: `Function (editor: jQuery, event: Event)`  
-  - param {jQuery} **editor** - EmojioneArea input  
+  triggers when user clicks on emojionearea input or picker
+  Handler type: `Function (editor: jQuery, event: Event)`
+  - param {jQuery} **editor** - EmojioneArea input
   - param {Event} **event** - jQuery Event object
 
 #### `mousedown`
-  triggers on `mousedown` of emojionearea input or picker  
-  Handler type: `Function (editor: jQuery, event: Event)`  
-  - param {jQuery} **editor** - EmojioneArea input  
+  triggers on `mousedown` of emojionearea input or picker
+  Handler type: `Function (editor: jQuery, event: Event)`
+  - param {jQuery} **editor** - EmojioneArea input
   - param {Event} **event** - jQuery Event object
-  
+
 #### `mouseup`
-  triggers on `mouseup` of emojionearea input or picker  
-  Handler type: `Function (editor: jQuery, event: Event)`  
-  - param {jQuery} **editor** - EmojioneArea input  
+  triggers on `mouseup` of emojionearea input or picker
+  Handler type: `Function (editor: jQuery, event: Event)`
+  - param {jQuery} **editor** - EmojioneArea input
   - param {Event} **event** - jQuery Event object
-  
+
 #### `keyup`
-  triggers on `keyup` of emojionearea input or picker  
-  Handler type: `Function (editor: jQuery, event: Event)`  
-  - param {jQuery} **editor** - EmojioneArea input  
+  triggers on `keyup` of emojionearea input or picker
+  Handler type: `Function (editor: jQuery, event: Event)`
+  - param {jQuery} **editor** - EmojioneArea input
   - param {Event} **event** - jQuery Event object
-  
+
 #### `keypress`
-  triggers on `keypress` of emojionearea input or picker  
-  Handler type: `Function (editor: jQuery, event: Event)`  
-  - param {jQuery} **editor** - EmojioneArea input  
+  triggers on `keypress` of emojionearea input or picker
+  Handler type: `Function (editor: jQuery, event: Event)`
+  - param {jQuery} **editor** - EmojioneArea input
   - param {Event} **event** - jQuery Event object
-  
+
 #### `focus`
-  triggers on `focus` of emojionearea input  
-  Handler type: `Function (editor: jQuery, event: Event)`  
-  - param {jQuery} **editor** - EmojioneArea input  
+  triggers on `focus` of emojionearea input
+  Handler type: `Function (editor: jQuery, event: Event)`
+  - param {jQuery} **editor** - EmojioneArea input
   - param {Event} **event** - jQuery Event object
 
 #### `blur`
-  triggers on `blur` of emojionearea input  
-  Handler type: `Function (editor: jQuery, event: Event)`  
-  - param {jQuery} **editor** - EmojioneArea input  
+  triggers on `blur` of emojionearea input
+  Handler type: `Function (editor: jQuery, event: Event)`
+  - param {jQuery} **editor** - EmojioneArea input
   - param {Event} **event** - jQuery Event object
 
 #### `paste`
-  triggers when user has pasted content to input area  
+  triggers when user has pasted content to input area
   Handler type: `Function (editor: jQuery, text: String, html: String)`
-  - param {jQuery} **editor** - EmojioneArea input  
+  - param {jQuery} **editor** - EmojioneArea input
   - param {String} **text** - pasted vanilla text
   - param {String} **html** - pasted html content
-  
+
 #### `resize`
-  triggers when input area has resized  
+  triggers when input area has resized
   Handler type: `Function` (no params)
-  
+
 #### `change`
-  triggers when input area has changed  
+  triggers when input area has changed
   Handler type: `Function` (no params)
 
 #### `emojibtn.click`
-  triggers when user clicks on emoji button at the picker area  
+  triggers when user clicks on emoji button at the picker area
   Handler type: `Function (emojibtn: jQuery)`
-  - param {jQuery} **emojibtn** - emoji button that user has clicked 
-  
+  - param {jQuery} **emojibtn** - emoji button that user has clicked
+
 #### `button.click`
-  triggers when user clicks on show/hide button  
+  triggers when user clicks on show/hide button
   Handler type: `Function (button: jQuery)`
   - param {jQuery} **button** - show/hide button
-  
+
 #### `tone.click`
-  triggers when user clicks on tone filter button  
+  triggers when user clicks on tone filter button
   Handler type: `Function (button: jQuery)`
   - param {jQuery} **button** - tone button that user has clicked
 
 #### `picker.show`
-  triggers on show picker  
+  triggers on show picker
   Handler type: `Function (picker: jQuery)`
   - param {jQuery} **picker** - picker area
 
 #### `picker.hide`
-  triggers when picker has been hidden  
+  triggers when picker has been hidden
   Handler type: `Function (picker: jQuery)`
   - param {jQuery} **picker** - picker area
 
 #### `picker.mousedown`
-  triggers on `mousedown` of emojionearea picker area 
+  triggers on `mousedown` of emojionearea picker area
   Handler type: `Function (picker: jQuery)`
   - param {jQuery} **picker** - picker area
 
 #### `picker.mouseup`
-  triggers on `mouseup` of emojionearea picker area 
+  triggers on `mouseup` of emojionearea picker area
   Handler type: `Function (picker: jQuery)`
   - param {jQuery} **picker** - picker area
 
 #### `picker.click`
-  triggers on `click` of emojionearea picker area 
+  triggers on `click` of emojionearea picker area
   Handler type: `Function (picker: jQuery)`
   - param {jQuery} **picker** - picker area
 
 #### `picker.keydown`
-  triggers on `keydown` of emojionearea picker area 
+  triggers on `keydown` of emojionearea picker area
   Handler type: `Function (picker: jQuery)`
   - param {jQuery} **picker** - picker area
 
 #### `picker.keypress`
-  triggers on `keypress` of emojionearea picker area 
+  triggers on `keypress` of emojionearea picker area
   Handler type: `Function (picker: jQuery)`
   - param {jQuery} **picker** - picker area
-  
+
 #### `search.focus`
-  triggers on `focus` of picker search area  
+  triggers on `focus` of picker search area
   Handler type: `Function` (no params)
 
 #### `search.keypress`
-  triggers when user press key on picker search area  
+  triggers when user press key on picker search area
   Handler type: `Function` (no params)
 
 
 ### Events Usage
 
-There are 2 ways to set events, directly in options via options `events`.  
+There are 2 ways to set events, directly in options via options `events`.
 Note: For events with `.` (dot) you can set event name with `_`(dash) instead of `.` (dot) here.
 
 Example, set events in the options:
@@ -808,7 +808,7 @@ $("selector").emojioneArea({
 
 Also you can manage events via `.on()`, `.off()` and `.trigger()` methods
 
-Example: 
+Example:
 
 ```JS
   var el = $("selector").emojioneArea();
@@ -863,14 +863,14 @@ If you just want to display Emoji icons, the EmojiOne library already provides e
 
 #### Can I add extra buttons into EmojiOneArea, alongside the existing emoji picker icon?
 This is not fully supported, but you could respond to the jQuery onLoad event which EmojiOneArea fires once its initialised, and insert your buttons into the DOM at this point
-see https://github.com/mervick/emojionearea/issues/152
+see https://github.com/woyehaizaixiang/emojionearea-open/issues/152
 
 #### Firefox is not positioning the input caret correctly in EmojiOneArea
 This appears to be a long standing FireFox bug, apparently related to contenteditable, the placeholder attribute, and the pseudo :before or :after classes
 https://bugzilla.mozilla.org/show_bug.cgi?id=1020973
 
 There are various workarounds such as changing placeholder, or adding some padding
-See https://github.com/mervick/emojionearea/issues/86
+See https://github.com/woyehaizaixiang/emojionearea-open/issues/86
 
 #### Can I modify the position of EmojiOneArea picker?
 You can use the `pickerPosition` option which provides basic control of where the picker appears, in relation to the source input.
@@ -881,12 +881,12 @@ For more control, you could apply translate CSS to the picker
 #### Internet Explorer focus issues
 IE 11 causes EmojiOneArea to hide (and trigger blur event) when the emoji picker scrollbar is clicked
 There is no current fix for this, although there are a few crude workarounds
-See https://github.com/mervick/emojionearea/issues/127
+See https://github.com/woyehaizaixiang/emojionearea-open/issues/127
 
 #### EmojiOneArea positioning
 There are known issues with positioning the EmojiOneArea picker.
 It does not currently ensure the picker is entirely visible on small screen devices, or positioned properly when it is invoked from the bottom of a page (it could be clipped)
-See https://github.com/mervick/emojionearea/issues/131
+See https://github.com/woyehaizaixiang/emojionearea-open/issues/131
 
 #### Browser loads the textcomplete.js from CDN, everytime an EmojiOneArea is instantiated
 You can avoid this by explicitly including the textcomplete script into your document.

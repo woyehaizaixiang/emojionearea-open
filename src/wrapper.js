@@ -1,6 +1,6 @@
 /*!
  * EmojioneArea v@VERSION
- * https://github.com/mervick/emojionearea
+ * https://github.com/woyehaizaixiang/emojionearea-open
  * Copyright Andrey Izman and other contributors
  * Released under the MIT license
  * Date: @DATE
