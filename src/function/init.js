@@ -234,6 +234,9 @@ function($, emojione, blankImg, slice, css_class, emojioneSupportMode, invisible
         attach(self, button, {click: "button.click"});
         attach(self, [picker, buttoninsert], {mousedown: "!mousedown"}, editor);
         attach(self, buttoninsert, {click: "buttoninsert.click"});
+        console.log(options.insertel);
+        // 新增支持insert插入方法，但需传入触发事件的dom
+        options.insertel && attach(self, [picker, options.insertel], {mousedown: "!mousedown"}, editor);
         attach(self, editor, {paste :"!paste"}, editor);
         attach(self, editor, ["focus", "blur"], function() { return self.stayFocused ? false : editor; } );
         attach(self, picker, {mousedown: "picker.mousedown", mouseup: "picker.mouseup", click: "picker.click",

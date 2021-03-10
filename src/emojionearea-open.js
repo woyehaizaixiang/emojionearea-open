@@ -18,7 +18,7 @@ define([
     'prototype/hidePicker',
     'prototype/enable',
     'prototype/disable',
-    'prototype/pasteHtmlAtCaret',
+    'prototype/insert',
 ],
 function($, EmojioneArea, getDefaultOptions, htmlFromText, blankImg, emojioneSupportMode, loadEmojione, getOptions) {
     $.fn.emojioneArea = function(options) {
