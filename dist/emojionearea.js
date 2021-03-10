@@ -1,9 +1,9 @@
 /*!
- * EmojioneArea v1.0.2
+ * EmojioneArea v1.0.3
  * https://github.com/woyehaizaixiang/emojionearea-open
  * Copyright Andrey Izman and other contributors
  * Released under the MIT license
- * Date: 2021-03-10T10:15Z
+ * Date: 2021-03-10T10:18Z
  */
 window = ( typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {} );
 document = window.document || {};
