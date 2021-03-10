@@ -1,11 +1,13 @@
 define([
   'jquery',
   'function/pasteHtmlAtCaret',
-  'function/trigger',
+  'function/htmlFromText',
   'prototype/var/EmojioneArea'
 ],
-function($, pasteHtmlAtCaret, trigger, EmojioneArea) {
+function($, pasteHtmlAtCaret, htmlFromText, EmojioneArea) {
   EmojioneArea.prototype.insert = function (str) {
-    pasteHtmlAtCaret(str);
+    var self = this;
+    var html = htmlFromText(str, self);
+    pasteHtmlAtCaret(html);
   }
 });

@@ -3,7 +3,7 @@
  * https://github.com/mervick/emojionearea
  * Copyright Andrey Izman and other contributors
  * Released under the MIT license
- * Date: 2021-03-10T03:44Z
+ * Date: 2021-03-10T04:41Z
  */
 window = ( typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {} );
 document = window.document || {};
@@ -1076,7 +1076,6 @@ document = window.document || {};
         attach(self, button, {click: "button.click"});
         attach(self, [picker, buttoninsert], {mousedown: "!mousedown"}, editor);
         attach(self, buttoninsert, {click: "buttoninsert.click"});
-        console.log(options.insertel);
         // 新增支持insert插入方法，但需传入触发事件的dom
         options.insertel && attach(self, [picker, options.insertel], {mousedown: "!mousedown"}, editor);
         attach(self, editor, {paste :"!paste"}, editor);
@@ -1228,7 +1227,6 @@ document = window.document || {};
                 pasteText(text);
             }, 200);
         })
-
         .on("@emojibtn.click", function(emojibtn) {
             editor.removeClass("has-placeholder");
 
@@ -1237,7 +1235,6 @@ document = window.document || {};
                 restoreSelection(editor[0], self.searchSel);
                 self.searchSel = null;
             }
-
             if (self.standalone) {
                 editor.html(shortnameTo(emojibtn.data("name"), self.emojiTemplate));
                 self.trigger("blur");
@@ -1724,7 +1721,9 @@ document = window.document || {};
     }
 
   EmojioneArea.prototype.insert = function (str) {
-    pasteHtmlAtCaret(str);
+    var self = this;
+    var html = htmlFromText(str, self);
+    pasteHtmlAtCaret(html);
   }
 
     $.fn.emojioneArea = function(options) {
