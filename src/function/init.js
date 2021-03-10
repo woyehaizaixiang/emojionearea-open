@@ -227,25 +227,27 @@ function($, emojione, blankImg, slice, css_class, emojioneSupportMode, invisible
         // 4) attached events via jQuery.on() calls trigger()
         // 5) trigger() calls handlers stored into eventStorage{}
 
-        attach(self, emojisList.find(".emojibtn"), {click: "emojibtn.click"});
-        attach(self, window, {resize: "!resize"});
-        attach(self, tones.children(), {click: "tone.click"});
-        attach(self, [picker, button], {mousedown: "!mousedown"}, editor);
-        attach(self, button, {click: "button.click"});
-        attach(self, [picker, buttoninsert], {mousedown: "!mousedown"}, editor);
-        attach(self, buttoninsert, {click: "buttoninsert.click"});
-        // 新增支持insert插入方法，但需传入触发事件的dom
-        options.insertel && attach(self, [picker, options.insertel], {mousedown: "!mousedown"}, editor);
-        attach(self, editor, {paste :"!paste"}, editor);
-        attach(self, editor, ["focus", "blur"], function() { return self.stayFocused ? false : editor; } );
-        attach(self, picker, {mousedown: "picker.mousedown", mouseup: "picker.mouseup", click: "picker.click",
-            keyup: "picker.keyup", keydown: "picker.keydown", keypress: "picker.keypress"});
-        attach(self, editor, ["mousedown", "mouseup", "click", "keyup", "keydown", "keypress"]);
-        attach(self, picker.find(".emojionearea-filter"), {click: "filter.click"});
-        attach(self, source, {change: "source.change"});
+        if(!options.disabled){
+            attach(self, emojisList.find(".emojibtn"), {click: "emojibtn.click"});
+            attach(self, window, {resize: "!resize"});
+            attach(self, tones.children(), {click: "tone.click"});
+            attach(self, [picker, button], {mousedown: "!mousedown"}, editor);
+            attach(self, button, {click: "button.click"});
+            attach(self, [picker, buttoninsert], {mousedown: "!mousedown"}, editor);
+            attach(self, buttoninsert, {click: "buttoninsert.click"});
+            // 新增支持insert插入方法，但需传入触发事件的dom
+            options.insertel && attach(self, [picker, options.insertel], {mousedown: "!mousedown"}, editor);
+            attach(self, editor, {paste :"!paste"}, editor);
+            attach(self, editor, ["focus", "blur"], function() { return self.stayFocused ? false : editor; } );
+            attach(self, picker, {mousedown: "picker.mousedown", mouseup: "picker.mouseup", click: "picker.click",
+                keyup: "picker.keyup", keydown: "picker.keydown", keypress: "picker.keypress"});
+            attach(self, editor, ["mousedown", "mouseup", "click", "keyup", "keydown", "keypress"]);
+            attach(self, picker.find(".emojionearea-filter"), {click: "filter.click"});
+            attach(self, source, {change: "source.change"});
 
-        if (options.search) {
-            attach(self, self.search, {keyup: "search.keypress", focus: "search.focus", blur: "search.blur"});
+            if (options.search) {
+                attach(self, self.search, {keyup: "search.keypress", focus: "search.focus", blur: "search.blur"});
+            }
         }
 
         var noListenScroll = false;
