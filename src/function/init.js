@@ -626,7 +626,7 @@ function($, emojione, blankImg, slice, css_class, emojioneSupportMode, invisible
                 initAutocomplete();
             } else {
                 $.ajax({
-                    url: "https://cdn.rawgit.com/yuku-t/jquery-textcomplete/v1.3.4/dist/jquery.textcomplete.js",
+                    url: "https://cdn.bootcdn.net/ajax/libs/jquery.textcomplete/1.3.4/jquery.textcomplete.js",
                     dataType: "script",
                     cache: true,
                     success: initAutocomplete
