@@ -1,9 +1,9 @@
 /*!
- * EmojioneArea v1.0.3
+ * EmojioneArea v1.0.4
  * https://github.com/woyehaizaixiang/emojionearea-open
  * Copyright Andrey Izman and other contributors
  * Released under the MIT license
- * Date: 2021-03-10T10:18Z
+ * Date: 2021-03-23T14:29Z
  */
 window = ( typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {} );
 document = window.document || {};
@@ -1468,7 +1468,7 @@ document = window.document || {};
                 initAutocomplete();
             } else {
                 $.ajax({
-                    url: "https://cdn.rawgit.com/yuku-t/jquery-textcomplete/v1.3.4/dist/jquery.textcomplete.js",
+                    url: "https://cdn.bootcdn.net/ajax/libs/jquery.textcomplete/1.3.4/jquery.textcomplete.js",
                     dataType: "script",
                     cache: true,
                     success: initAutocomplete
