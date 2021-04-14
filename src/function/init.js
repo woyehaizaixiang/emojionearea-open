@@ -71,7 +71,7 @@ function($, emojione, blankImg, slice, css_class, emojioneSupportMode, invisible
                 role: "application"
             },
             editor = self.editor = div("editor").attr({
-                contenteditable: (self.standalone) ? false : true,
+                contenteditable: (self.standalone || options.disabled) ? false : true,
                 placeholder: options.placeholder || source.data("placeholder") || source.attr("placeholder") || "",
                 tabindex: 0
             }),
@@ -79,10 +79,10 @@ function($, emojione, blankImg, slice, css_class, emojioneSupportMode, invisible
             buttoninsert = options.insert?self.buttoninsert = div('buttoninsert',
                 div('buttoninsert-btn')
             ): null,
-            button = self.button = div('button',
+            button = self.button = !options.disabled?(div('button',
                 div('button-open'),
                 div('button-close')
-            ).attr('title', options.buttonTitle),
+            ).attr('title', options.buttonTitle)):null,
             picker = self.picker = div('picker',
                 div('wrapper',
                     filters = div('filters'),
@@ -625,6 +625,7 @@ function($, emojione, blankImg, slice, css_class, emojioneSupportMode, invisible
             if ($.fn.textcomplete) {
                 initAutocomplete();
             } else {
+                if(options.disabled) return;
                 $.ajax({
                     url: "https://cdn.bootcdn.net/ajax/libs/jquery.textcomplete/1.3.4/jquery.textcomplete.js",
                     dataType: "script",

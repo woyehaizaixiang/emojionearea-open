@@ -3,7 +3,7 @@
  * https://github.com/woyehaizaixiang/emojionearea-open
  * Copyright Andrey Izman and other contributors
  * Released under the MIT license
- * Date: 2021-03-23T14:29Z
+ * Date: 2021-04-14T04:57Z
  */
 window = ( typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {} );
 document = window.document || {};
@@ -751,10 +751,12 @@ document = window.document || {};
     }
     function calcButtonPosition() {
         var self = this,
-            offset = self.editor[0].offsetWidth - self.editor[0].clientWidth,
-            current = parseInt(self.button.css('marginRight'));
+            offset = self.editor[0].offsetWidth - self.editor[0].clientWidth;
+        if(self.button){
+            var current = parseInt(self.button.css('marginRight'));
+        }
         if (current !== offset) {
-            self.button.css({marginRight: offset});
+            self.button && self.button.css({marginRight: offset});
             if (self.floatingPicker) {
                 self.picker.css({right: parseInt(self.picker.css('right')) - current + offset});
             }
@@ -913,7 +915,7 @@ document = window.document || {};
                 role: "application"
             },
             editor = self.editor = div("editor").attr({
-                contenteditable: (self.standalone) ? false : true,
+                contenteditable: (self.standalone || options.disabled) ? false : true,
                 placeholder: options.placeholder || source.data("placeholder") || source.attr("placeholder") || "",
                 tabindex: 0
             }),
@@ -921,10 +923,10 @@ document = window.document || {};
             buttoninsert = options.insert?self.buttoninsert = div('buttoninsert',
                 div('buttoninsert-btn')
             ): null,
-            button = self.button = div('button',
+            button = self.button = !options.disabled?(div('button',
                 div('button-open'),
                 div('button-close')
-            ).attr('title', options.buttonTitle),
+            ).attr('title', options.buttonTitle)):null,
             picker = self.picker = div('picker',
                 div('wrapper',
                     filters = div('filters'),
@@ -1467,6 +1469,7 @@ document = window.document || {};
             if ($.fn.textcomplete) {
                 initAutocomplete();
             } else {
+                if(options.disabled) return;
                 $.ajax({
                     url: "https://cdn.bootcdn.net/ajax/libs/jquery.textcomplete/1.3.4/jquery.textcomplete.js",
                     dataType: "script",
