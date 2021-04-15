@@ -625,7 +625,9 @@ function($, emojione, blankImg, slice, css_class, emojioneSupportMode, invisible
             if ($.fn.textcomplete) {
                 initAutocomplete();
             } else {
-                if(options.disabled) return;
+                // 禁用自动匹配
+                initAutocomplete
+                return
                 $.ajax({
                     url: "https://cdn.bootcdn.net/ajax/libs/jquery.textcomplete/1.3.4/jquery.textcomplete.js",
                     dataType: "script",

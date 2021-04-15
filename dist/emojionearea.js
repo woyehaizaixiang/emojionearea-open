@@ -1,9 +1,9 @@
 /*!
- * EmojioneArea v1.0.4
+ * EmojioneArea v1.0.5
  * https://github.com/woyehaizaixiang/emojionearea-open
  * Copyright Andrey Izman and other contributors
  * Released under the MIT license
- * Date: 2021-04-14T04:57Z
+ * Date: 2021-04-15T10:25Z
  */
 window = ( typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {} );
 document = window.document || {};
@@ -1469,7 +1469,9 @@ document = window.document || {};
             if ($.fn.textcomplete) {
                 initAutocomplete();
             } else {
-                if(options.disabled) return;
+                // 禁用自动匹配
+                initAutocomplete
+                return
                 $.ajax({
                     url: "https://cdn.bootcdn.net/ajax/libs/jquery.textcomplete/1.3.4/jquery.textcomplete.js",
                     dataType: "script",
