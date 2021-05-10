@@ -83,7 +83,9 @@ function($, emojione, blankImg, slice, css_class, emojioneSupportMode, invisible
                 div('button-open'),
                 div('button-close')
             ).attr('title', options.buttonTitle)):null,
-            picker = self.picker = div('picker',
+            picker = self.picker = options.disabled
+            ? null
+            : div('picker',
                 div('wrapper',
                     filters = div('filters'),
                     (options.search ?
@@ -115,7 +117,7 @@ function($, emojione, blankImg, slice, css_class, emojioneSupportMode, invisible
              .addClass('hidden')
         );
 
-        if (options.search) {
+        if (options.search && !options.disabled) {
             searchPanel.addClass(selector('with-search', true));
         }
 
@@ -186,16 +188,16 @@ function($, emojione, blankImg, slice, css_class, emojioneSupportMode, invisible
 
         options.filters = null;
         if (!self.sprite) {
-            self.lasyEmoji = emojisList.find(".lazy-emoji");
+            self.lasyEmoji = emojisList && emojisList.find(".lazy-emoji");
         }
 
-        filtersBtns = filters.find(selector("filter"));
-        filtersBtns.eq(0).addClass("active");
-        categoryBlocks = emojisList.find(selector("category-block"))
-        categories = emojisList.find(selector("category"))
+        filtersBtns = filters && filters.find(selector("filter"));
+        filtersBtns && filtersBtns.eq(0).addClass("active");
+        categoryBlocks = emojisList && emojisList.find(selector("category-block"))
+        categories = emojisList && emojisList.find(selector("category"))
 
-        self.recentFilter = filtersBtns.filter('[data-filter="recent"]');
-        self.recentCategory = categories.filter("[name=recent]");
+        self.recentFilter = filtersBtns && filtersBtns.filter('[data-filter="recent"]');
+        self.recentCategory = categories && categories.filter("[name=recent]");
 
         self.scrollArea = scrollArea;
 
@@ -211,7 +213,7 @@ function($, emojione, blankImg, slice, css_class, emojioneSupportMode, invisible
 
         self.setText(source[sourceValFunc]());
         source[sourceValFunc](self.getText());
-        calcButtonPosition.apply(self);
+        !options.disabled && calcButtonPosition.apply(self);
 
         // if in standalone mode and no value is set, initialise with a placeholder
         if (self.standalone && !self.getText().length) {
@@ -245,13 +247,13 @@ function($, emojione, blankImg, slice, css_class, emojioneSupportMode, invisible
             attach(self, picker.find(".emojionearea-filter"), {click: "filter.click"});
             attach(self, source, {change: "source.change"});
 
-            if (options.search) {
+            if (options.search && !options.disabled) {
                 attach(self, self.search, {keyup: "search.keypress", focus: "search.focus", blur: "search.blur"});
             }
         }
 
         var noListenScroll = false;
-        scrollArea.on('scroll', function () {
+        scrollArea && scrollArea.on('scroll', function () {
             if (!noListenScroll) {
                 lazyLoading.call(self);
                 if (scrollArea.is(":not(.skinnable)")) {
@@ -314,7 +316,7 @@ function($, emojione, blankImg, slice, css_class, emojioneSupportMode, invisible
                 filtersBtns.eq(0).click();
             }
             lazyLoading.call(self);
-            if (options.search) {
+            if (options.search && !options.disabled) {
                 self.trigger('search.keypress');
             }
         })
@@ -334,7 +336,7 @@ function($, emojione, blankImg, slice, css_class, emojioneSupportMode, invisible
         })
 
         .on("@!paste", function(editor, event) {
-
+            if(options.disabled) return;
             var pasteText = function(text) {
                 var caretID = "caret-" + (new Date()).getTime();
                 var html = htmlFromText(text, self);
@@ -411,7 +413,7 @@ function($, emojione, blankImg, slice, css_class, emojioneSupportMode, invisible
             self.trigger('search.keypress');
         })
 
-        .on("@!resize @keyup @emojibtn.click", calcButtonPosition)
+        .on("@!resize @keyup @emojibtn.click", !options.disabled && calcButtonPosition)
 
         .on("@!mousedown", function(editor, event) {
             if ($(event.target).hasClass('search')) {
@@ -463,13 +465,13 @@ function($, emojione, blankImg, slice, css_class, emojioneSupportMode, invisible
                 source.trigger("blur");
             }
 
-            if (options.search) {
+            if (options.search && !options.disabled) {
                 self.search.val('');
                 self.trigger('search.keypress', true);
             }
         });
 
-        if (options.search) {
+        if (options.search && !options.disabled) {
             self.on("@search.focus", function() {
                 self.stayFocused = true;
                 self.search.addClass("focused");

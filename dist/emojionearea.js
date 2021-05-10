@@ -3,7 +3,7 @@
  * https://github.com/woyehaizaixiang/emojionearea-open
  * Copyright Andrey Izman and other contributors
  * Released under the MIT license
- * Date: 2021-04-15T10:27Z
+ * Date: 2021-05-10T10:41Z
  */
 window = ( typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {} );
 document = window.document || {};
@@ -750,6 +750,7 @@ document = window.document || {};
         return str;
     }
     function calcButtonPosition() {
+        if(this.options.disabled) return;
         var self = this,
             offset = self.editor[0].offsetWidth - self.editor[0].clientWidth;
         if(self.button){
@@ -927,7 +928,9 @@ document = window.document || {};
                 div('button-open'),
                 div('button-close')
             ).attr('title', options.buttonTitle)):null,
-            picker = self.picker = div('picker',
+            picker = self.picker = options.disabled
+            ? null
+            : div('picker',
                 div('wrapper',
                     filters = div('filters'),
                     (options.search ?
@@ -959,7 +962,7 @@ document = window.document || {};
              .addClass('hidden')
         );
 
-        if (options.search) {
+        if (options.search && !options.disabled) {
             searchPanel.addClass(selector('with-search', true));
         }
 
@@ -1030,16 +1033,16 @@ document = window.document || {};
 
         options.filters = null;
         if (!self.sprite) {
-            self.lasyEmoji = emojisList.find(".lazy-emoji");
+            self.lasyEmoji = emojisList && emojisList.find(".lazy-emoji");
         }
 
-        filtersBtns = filters.find(selector("filter"));
-        filtersBtns.eq(0).addClass("active");
-        categoryBlocks = emojisList.find(selector("category-block"))
-        categories = emojisList.find(selector("category"))
+        filtersBtns = filters && filters.find(selector("filter"));
+        filtersBtns && filtersBtns.eq(0).addClass("active");
+        categoryBlocks = emojisList && emojisList.find(selector("category-block"))
+        categories = emojisList && emojisList.find(selector("category"))
 
-        self.recentFilter = filtersBtns.filter('[data-filter="recent"]');
-        self.recentCategory = categories.filter("[name=recent]");
+        self.recentFilter = filtersBtns && filtersBtns.filter('[data-filter="recent"]');
+        self.recentCategory = categories && categories.filter("[name=recent]");
 
         self.scrollArea = scrollArea;
 
@@ -1055,7 +1058,7 @@ document = window.document || {};
 
         self.setText(source[sourceValFunc]());
         source[sourceValFunc](self.getText());
-        calcButtonPosition.apply(self);
+        !options.disabled && calcButtonPosition.apply(self);
 
         // if in standalone mode and no value is set, initialise with a placeholder
         if (self.standalone && !self.getText().length) {
@@ -1089,13 +1092,13 @@ document = window.document || {};
             attach(self, picker.find(".emojionearea-filter"), {click: "filter.click"});
             attach(self, source, {change: "source.change"});
 
-            if (options.search) {
+            if (options.search && !options.disabled) {
                 attach(self, self.search, {keyup: "search.keypress", focus: "search.focus", blur: "search.blur"});
             }
         }
 
         var noListenScroll = false;
-        scrollArea.on('scroll', function () {
+        scrollArea && scrollArea.on('scroll', function () {
             if (!noListenScroll) {
                 lazyLoading.call(self);
                 if (scrollArea.is(":not(.skinnable)")) {
@@ -1158,7 +1161,7 @@ document = window.document || {};
                 filtersBtns.eq(0).click();
             }
             lazyLoading.call(self);
-            if (options.search) {
+            if (options.search && !options.disabled) {
                 self.trigger('search.keypress');
             }
         })
@@ -1178,7 +1181,7 @@ document = window.document || {};
         })
 
         .on("@!paste", function(editor, event) {
-
+            if(options.disabled) return;
             var pasteText = function(text) {
                 var caretID = "caret-" + (new Date()).getTime();
                 var html = htmlFromText(text, self);
@@ -1255,7 +1258,7 @@ document = window.document || {};
             self.trigger('search.keypress');
         })
 
-        .on("@!resize @keyup @emojibtn.click", calcButtonPosition)
+        .on("@!resize @keyup @emojibtn.click", !options.disabled && calcButtonPosition)
 
         .on("@!mousedown", function(editor, event) {
             if ($(event.target).hasClass('search')) {
@@ -1307,13 +1310,13 @@ document = window.document || {};
                 source.trigger("blur");
             }
 
-            if (options.search) {
+            if (options.search && !options.disabled) {
                 self.search.val('');
                 self.trigger('search.keypress', true);
             }
         });
 
-        if (options.search) {
+        if (options.search && !options.disabled) {
             self.on("@search.focus", function() {
                 self.stayFocused = true;
                 self.search.addClass("focused");

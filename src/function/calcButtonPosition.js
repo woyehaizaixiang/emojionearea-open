@@ -1,6 +1,7 @@
 define(
 function() {
     return function() {
+        if(this.options.disabled) return;
         var self = this,
             offset = self.editor[0].offsetWidth - self.editor[0].clientWidth;
         if(self.button){
