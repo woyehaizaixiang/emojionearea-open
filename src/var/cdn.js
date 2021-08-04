@@ -1,7 +1,6 @@
 define(function() {
     return {
-        defaultBase: "https://cdnjs.cloudflare.com/ajax/libs/emojione/",
-        defaultBase3: "https://cdn.jsdelivr.net/",
+        defaultBase: "https://aloss.11oi.com/yundkzs/lib/emojionearea/v3.2",
         base: null,
         isLoading: false
     };

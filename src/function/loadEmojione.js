@@ -18,16 +18,9 @@ function(emojione, uniRegexp, readyCallbacks, emojioneSupportMode, cdn, getEmoji
             if (!emojione || getSupportMode(detectVersion(emojione)) < 2) {
                 cdn.isLoading = true;
                 var emojioneJsCdnUrlBase;
-                if (getSupportMode(emojioneVersion) > 5) {
-                    emojioneJsCdnUrlBase = cdn.defaultBase3 + "npm/emojione@" + emojioneVersion;
-                } else if (getSupportMode(emojioneVersion) > 4) {
-                    emojioneJsCdnUrlBase = cdn.defaultBase3 + "emojione/" + emojioneVersion;
-                } else {
-                    emojioneJsCdnUrlBase = cdn.defaultBase + "/" + emojioneVersion;
-                }
-
+                emojioneJsCdnUrlBase = cdn.defaultBase;
                 $.ajax({
-                    url: emojioneJsCdnUrlBase + "/lib/js/emojione.min.js",
+                    url: emojioneJsCdnUrlBase + "/js/emojione.min.js",
                     dataType: "script",
                     cache: true,
                     success: function () {
@@ -35,13 +28,8 @@ function(emojione, uniRegexp, readyCallbacks, emojioneSupportMode, cdn, getEmoji
                         emojioneVersion = detectVersion(emojione);
                         emojioneSupportMode = getSupportMode(emojioneVersion);
                         var sprite;
-                        if (emojioneSupportMode > 4) {
-                            cdn.base = cdn.defaultBase3 + "emojione/assets/" + emojioneVersion;
-                            sprite = cdn.base + "/sprites/emojione-sprite-" + emojione.emojiSize + ".css";
-                        } else {
-                            cdn.base = cdn.defaultBase + emojioneVersion + "/assets";
-                            sprite = cdn.base + "/sprites/emojione.sprites.css";
-                        }
+                        cdn.base = cdn.defaultBase + "/assets";
+                        sprite = cdn.base + "/emojione.sprites.css";
                         if (options.sprite) {
                             if (document.createStyleSheet) {
                                 document.createStyleSheet(sprite);
@@ -58,11 +46,7 @@ function(emojione, uniRegexp, readyCallbacks, emojioneSupportMode, cdn, getEmoji
             } else {
                 emojioneVersion = detectVersion(emojione);
                 emojioneSupportMode = getSupportMode(emojioneVersion);
-                if (emojioneSupportMode > 4) {
-                    cdn.base = cdn.defaultBase3 + "emojione/assets/" + emojioneVersion;
-                } else {
-                    cdn.base = cdn.defaultBase + emojioneVersion + "/assets";
-                }
+                cdn.base = cdn.defaultBase + "/assets";
             }
         }
 
@@ -71,8 +55,8 @@ function(emojione, uniRegexp, readyCallbacks, emojioneSupportMode, cdn, getEmoji
             if (options.useInternalCDN) {
                 if (emojioneSupportMode > 4) emojiSize = emojione.emojiSize + "/";
 
-                emojione.imagePathPNG = cdn.base + "/png/" + emojiSize;
-                emojione.imagePathSVG = cdn.base + "/svg/" + emojiSize;
+                emojione.imagePathPNG = cdn.base + "/emoji/";
+                emojione.imagePathSVG = cdn.base + "/emoji/";
                 emojione.imagePathSVGSprites = cdn.base + "/sprites/emojione.sprites.svg";
                 emojione.imageType = options.imageType;
             }
