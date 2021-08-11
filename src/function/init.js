@@ -243,7 +243,7 @@ function($, emojione, blankImg, slice, css_class, emojioneSupportMode, invisible
             attach(self, editor, ["focus", "blur"], function() { return self.stayFocused ? false : editor; } );
             attach(self, picker, {mousedown: "picker.mousedown", mouseup: "picker.mouseup", click: "picker.click",
                 keyup: "picker.keyup", keydown: "picker.keydown", keypress: "picker.keypress"});
-            attach(self, editor, ["mousedown", "mouseup", "click", "keyup", "keydown", "keypress"]);
+            attach(self, editor, ["mousedown", "mouseup", "click", "keyup", "keydown", "keypress", "cut",]);
             attach(self, picker.find(".emojionearea-filter"), {click: "filter.click"});
             attach(self, source, {change: "source.change"});
 
@@ -468,6 +468,33 @@ function($, emojione, blankImg, slice, css_class, emojioneSupportMode, invisible
             if (options.search && !options.disabled) {
                 self.search.val('');
                 self.trigger('search.keypress', true);
+            }
+        })
+
+        // v1.1.1新增优化change事件
+        .on("@paste", function() {
+            var content = self.editor.html();
+            if (self.content !== content) {
+                self.content = content;
+                trigger(self, 'change', [self.editor]);
+            }
+        })
+
+        .on("@cut", function() {
+            setTimeout(function(){
+                var content = self.editor.html();
+                if (self.content !== content) {
+                    self.content = content;
+                    trigger(self, 'change', [self.editor]);
+                }
+            })
+        })
+
+        .on("@keyup", function() {
+            var content = self.editor.html();
+            if (self.content !== content) {
+                self.content = content;
+                trigger(self, 'change', [self.editor]);
             }
         });
 

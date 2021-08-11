@@ -1,9 +1,9 @@
 /*!
- * EmojioneArea v1.1.0
+ * EmojioneArea v1.1.1
  * https://github.com/woyehaizaixiang/emojionearea-open
  * Copyright Andrey Izman and other contributors
  * Released under the MIT license
- * Date: 2021-08-04T08:00Z
+ * Date: 2021-08-11T10:38Z
  */
 window = ( typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {} );
 document = window.document || {};
@@ -1088,7 +1088,7 @@ document = window.document || {};
             attach(self, editor, ["focus", "blur"], function() { return self.stayFocused ? false : editor; } );
             attach(self, picker, {mousedown: "picker.mousedown", mouseup: "picker.mouseup", click: "picker.click",
                 keyup: "picker.keyup", keydown: "picker.keydown", keypress: "picker.keypress"});
-            attach(self, editor, ["mousedown", "mouseup", "click", "keyup", "keydown", "keypress"]);
+            attach(self, editor, ["mousedown", "mouseup", "click", "keyup", "keydown", "keypress", "cut",]);
             attach(self, picker.find(".emojionearea-filter"), {click: "filter.click"});
             attach(self, source, {change: "source.change"});
 
@@ -1313,6 +1313,33 @@ document = window.document || {};
             if (options.search && !options.disabled) {
                 self.search.val('');
                 self.trigger('search.keypress', true);
+            }
+        })
+
+        // v1.1.1新增优化change事件
+        .on("@paste", function() {
+            var content = self.editor.html();
+            if (self.content !== content) {
+                self.content = content;
+                trigger(self, 'change', [self.editor]);
+            }
+        })
+
+        .on("@cut", function() {
+            setTimeout(function(){
+                var content = self.editor.html();
+                if (self.content !== content) {
+                    self.content = content;
+                    trigger(self, 'change', [self.editor]);
+                }
+            })
+        })
+
+        .on("@keyup", function() {
+            var content = self.editor.html();
+            if (self.content !== content) {
+                self.content = content;
+                trigger(self, 'change', [self.editor]);
             }
         });
 
