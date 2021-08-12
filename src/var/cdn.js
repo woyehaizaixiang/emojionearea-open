@@ -1,6 +1,9 @@
-define(function() {
+define([
+    'function/getEmojioneVersion',
+],function() {
+    var emojioneVersion = getEmojioneVersion()
     return {
-        defaultBase: "https://aloss.11oi.com/yundkzs/lib/emojionearea/v3.2",
+        defaultBase: "https://cdn.jsdelivr.net/npm/emojionearea-open@"+emojioneVersion+"/assets",
         base: null,
         isLoading: false
     };
