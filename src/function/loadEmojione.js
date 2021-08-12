@@ -18,7 +18,8 @@ function(emojione, uniRegexp, readyCallbacks, emojioneSupportMode, cdn, getEmoji
             if (!emojione || getSupportMode(detectVersion(emojione)) < 2) {
                 cdn.isLoading = true;
                 var emojioneJsCdnUrlBase;
-                emojioneJsCdnUrlBase = options.cdn || cdn.defaultBase;
+                cdn.defaultBase = options.cdn || cdn.defaultBase;
+                emojioneJsCdnUrlBase = cdn.defaultBase;
                 $.ajax({
                     url: emojioneJsCdnUrlBase + "/js/emojione.min.js",
                     dataType: "script",
