@@ -1,6 +1,6 @@
 define([
     'function/getEmojioneVersion',
-],function() {
+],function(getEmojioneVersion) {
     var emojioneVersion = getEmojioneVersion()
     return {
         defaultBase: "https://cdn.jsdelivr.net/npm/emojionearea-open@"+emojioneVersion+"/assets",
