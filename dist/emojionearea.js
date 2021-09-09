@@ -3,7 +3,7 @@
  * https://github.com/woyehaizaixiang/emojionearea-open
  * Copyright Andrey Izman and other contributors
  * Released under the MIT license
- * Date: 2021-08-12T09:24Z
+ * Date: 2021-09-09T07:46Z
  */
 window = ( typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {} );
 document = window.document || {};
@@ -1500,14 +1500,14 @@ document = window.document || {};
                 initAutocomplete();
             } else {
                 // 禁用自动匹配
-                initAutocomplete
-                return
-                $.ajax({
-                    url: "https://cdn.bootcdn.net/ajax/libs/jquery.textcomplete/1.3.4/jquery.textcomplete.js",
-                    dataType: "script",
-                    cache: true,
-                    success: initAutocomplete
-                });
+                // initAutocomplete
+                // return
+                // $.ajax({
+                //     url: "https://cdn.bootcdn.net/ajax/libs/jquery.textcomplete/1.3.4/jquery.textcomplete.js",
+                //     dataType: "script",
+                //     cache: true,
+                //     success: initAutocomplete
+                // });
             }
         }
 

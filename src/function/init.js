@@ -655,14 +655,14 @@ function($, emojione, blankImg, slice, css_class, emojioneSupportMode, invisible
                 initAutocomplete();
             } else {
                 // 禁用自动匹配
-                initAutocomplete
-                return
-                $.ajax({
-                    url: "https://cdn.bootcdn.net/ajax/libs/jquery.textcomplete/1.3.4/jquery.textcomplete.js",
-                    dataType: "script",
-                    cache: true,
-                    success: initAutocomplete
-                });
+                // initAutocomplete
+                // return
+                // $.ajax({
+                //     url: "https://cdn.bootcdn.net/ajax/libs/jquery.textcomplete/1.3.4/jquery.textcomplete.js",
+                //     dataType: "script",
+                //     cache: true,
+                //     success: initAutocomplete
+                // });
             }
         }
 
