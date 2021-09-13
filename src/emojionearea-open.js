@@ -23,7 +23,7 @@ define([
 function($, EmojioneArea, getDefaultOptions, htmlFromText, blankImg, emojioneSupportMode, loadEmojione, getOptions) {
     $.fn.emojioneArea = function(options) {
         return this.each(function() {
-            if (!!this.emojioneArea) return this.emojioneArea;
+            // if (!!this.emojioneArea) return this.emojioneArea;
             $.data(this, 'emojioneArea', this.emojioneArea = new EmojioneArea($(this), options));
             return this.emojioneArea;
         });
