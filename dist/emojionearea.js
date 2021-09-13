@@ -1,9 +1,9 @@
 /*!
- * EmojioneArea v1.3.5
+ * EmojioneArea v1.3.6
  * https://github.com/woyehaizaixiang/emojionearea-open
  * Copyright Andrey Izman and other contributors
  * Released under the MIT license
- * Date: 2021-09-10T02:12Z
+ * Date: 2021-09-13T02:49Z
  */
 window = ( typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {} );
 document = window.document || {};
@@ -1751,7 +1751,7 @@ document = window.document || {};
 
     $.fn.emojioneArea = function(options) {
         return this.each(function() {
-            if (!!this.emojioneArea) return this.emojioneArea;
+            // if (!!this.emojioneArea) return this.emojioneArea;
             $.data(this, 'emojioneArea', this.emojioneArea = new EmojioneArea($(this), options));
             return this.emojioneArea;
         });
