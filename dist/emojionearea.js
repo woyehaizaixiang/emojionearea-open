@@ -1,9 +1,9 @@
 /*!
- * EmojioneArea v1.3.6
+ * EmojioneArea v1.3.7
  * https://github.com/woyehaizaixiang/emojionearea-open
  * Copyright Andrey Izman and other contributors
  * Released under the MIT license
- * Date: 2021-09-13T02:49Z
+ * Date: 2022-01-18T03:28Z
  */
 window = ( typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {} );
 document = window.document || {};
@@ -883,8 +883,8 @@ document = window.document || {};
         self.shortnames = options.shortnames;
         self.saveEmojisAs = options.saveEmojisAs;
         self.standalone = options.standalone;
-        self.emojiTemplate = '<img alt="{alt}" class="emojione' + (self.sprite ? '-{uni}" src="' + blankImg + '"/>' : 'emoji" src="{img}" crossorigin/>');
-        self.emojiTemplateAlt = self.sprite ? '<i class="emojione-{uni}"/>' : '<img class="emojioneemoji" src="{img}" crossorigin/>';
+        self.emojiTemplate = '<img alt="{alt}" class="emojione' + (self.sprite ? '-{uni}" src="' + blankImg + '"/>' : 'emoji" src="{img}"/>');
+        self.emojiTemplateAlt = self.sprite ? '<i class="emojione-{uni}"/>' : '<img class="emojioneemoji" src="{img}"/>';
         self.emojiBtnTemplate = '<i class="emojibtn" role="button" data-name="{name}" title="{friendlyName}">' + self.emojiTemplateAlt + '</i>';
         self.recentEmojis = options.recentEmojis && supportsLocalStorage();
 
@@ -1023,7 +1023,7 @@ document = window.document || {};
                 items = shortnameTo(items,
                     self.sprite ?
                         '<i class="emojibtn" role="button" data-name="{name}" title="{friendlyName}"><i class="emojione-{uni}"></i></i>' :
-                        '<i class="emojibtn" role="button" data-name="{name}" title="{friendlyName}"><img class="emojioneemoji lazy-emoji" data-src="{img}" crossorigin/></i>',
+                        '<i class="emojibtn" role="button" data-name="{name}" title="{friendlyName}"><img class="emojioneemoji lazy-emoji" data-src="{img}"/></i>',
                     true).split('|').join('');
 
                 category.html(items);
@@ -1764,7 +1764,7 @@ document = window.document || {};
 
         var self = this, pseudoSelf = {
             shortnames: (options && typeof options.shortnames !== 'undefined' ? options.shortnames : true),
-            emojiTemplate: '<img alt="{alt}" class="emojione' + (options && options.sprite && emojioneSupportMode < 3 ? '-{uni}" src="' + blankImg : 'emoji" src="{img}') + '" crossorigin />'
+            emojiTemplate: '<img alt="{alt}" class="emojione' + (options && options.sprite && emojioneSupportMode < 3 ? '-{uni}" src="' + blankImg : 'emoji" src="{img}') + '" />'
         };
 
         loadEmojione(options);
